@@ -1,0 +1,76 @@
+scalar GraphQLDate
+
+enum StatusType{
+New 
+Assigned
+Fixed 
+Closed
+}
+
+type BugCounts {
+    owner:String!
+    New:Int
+    Closed:Int
+    Assigned:Int
+    Fixed:Int
+}
+
+"Toned down Issue, used as inputs, without server generated values."
+input IssueInputs {
+title: String!
+"Optional, if not supplied, will be set to 'New'"
+status: StatusType=New
+owner: String
+effort: Int
+due: GraphQLDate
+description:String
+}
+
+type bug {
+_id:ID!
+id: Int!
+title: String!
+status: StatusType!
+owner: String
+effort: Int
+created: GraphQLDate!
+due: GraphQLDate
+description:String
+}
+
+#####"""Inputs for issueUpdate: all are optional. Whichever is specified will
+####be set to the given value, undefined fields will remain unmodified."""
+input BugUpdateInputs {
+title: String
+status: StatusType
+owner: String
+effort: Int
+due: GraphQLDate
+description: String
+}
+
+type BugListWithPages{
+    bugs:[bug!]!
+    pages:Int
+}
+
+##### Top level declarations
+type Query {
+about: String!
+bugList(status:StatusType effortMin:Int effortMax:Int 
+search:String page:Int=1): BugListWithPages
+bug(id:Int!):bug!
+bugCounts( 
+    effortMin:Int
+    effortMax:Int
+    status:StatusType
+    ):[BugCounts!]!
+}
+
+type Mutation {
+setAboutMessage(message: String!): String
+bugAdd(bug: IssueInputs!): bug!
+bugUpdate(id: Int!, changes: BugUpdateInputs!): bug!
+bugDelete(id: Int!):Boolean!
+bugRestore(id:Int!):Boolean!
+}
