@@ -15,7 +15,7 @@ const app = express();
 installHandler(app);
 app.use(express.static('public'));
 app.get('/',(req,res)=>{res.send("hello from backend")})
-const port=process.env.API_SERVER_PORT||4000;
+const port=process.env.PORT||4000;
 (async function() { try{
     await connectToDB();
     app.listen(port, function () {
