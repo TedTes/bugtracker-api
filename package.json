@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
+  "engines": {
+    "node":"12.11.0",
+    "npm":"6.11.3"
+  },
+
   "scripts": {
     "start": "nodemon -w server -e js,graphql -w . -w .env server.js",
     "lint": "eslint .",
@@ -23,7 +28,7 @@
     "google-auth-library": "^5.5.1",
     "graphql": "^14.5.8",
     "jsonwebtoken": "^8.5.1",
-    "mongodb": "^2.2.33",
+    "mongodb": "^3.3.5",
     "nodemon": "^1.19.3"
   },
   "devDependencies": {

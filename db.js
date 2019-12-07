@@ -1,25 +1,20 @@
-const {MongoClient}=require('mongodb');
+const MongoClient=require('mongodb').MongoClient;
 require('dotenv').config();
-
-const url=process.env.DB_URL||'mongodb://localhost:27017/bugtracker'
-
+console.log(process.env.DB_URL)
+const url=process.env.DB_URL||'mongodb+srv://Tedros:drowssap&321@bugtracker-69156.mongodb.net/bugtracker?retryWrites=true&w=majority'
 var db;
-async function connectToDB()
-{
-    MongoClient.connect(url,function(err,database){
-        if(err)
-        console.log(err);
-        db=database;
+
+ async function connectToDB()
+ {
+
+    MongoClient.connect(url, (err, client) => {
+        db = client.db('bugtracker');
     });
-//     const client=new MongoClient(url,{useNewUrlParser:true});
-//    await client.connect();
-//    console.log('connect to Db at',url);
-//    db=client.db;
+
 }
 
 async function getNextSequenceName(name)
 {
-    console.log("hello world colelctioins")
     result=await db.collection('counters').findOneAndUpdate(
         {_id:name},
         {$inc:{current:1}},

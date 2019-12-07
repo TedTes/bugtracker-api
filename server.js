@@ -3,7 +3,8 @@ const {installHandler}=require('./api-handler.js')
 const {connectToDB}=require('./db.js')
 const auth=require('./auth.js');
 const cookieParser=require('cookie-parser');
-
+ const MongoClient=require('mongodb').MongoClient;
+// console.log(process.env.DB_URL)
 require('dotenv').config();
 
 const app = express();

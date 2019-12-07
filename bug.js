@@ -127,7 +127,7 @@ function validate( bug ) {
         validate(bug);
          bug.created = new Date();
         
-      bug.id =await getNextSequenceName('bugs');
+     // bug.id =await getNextSequenceName('bugs');
       const result=await db.collection('buggs').insertOne(bug,(err,result)=>{
           if(err)
           MongoClient.close();
