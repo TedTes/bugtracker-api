@@ -1,14 +1,14 @@
 const MongoClient=require('mongodb').MongoClient;
 require('dotenv').config();
-const url=process.env.DB_URL||'mongodb+srv://Tedros:drowssap&321@bugtracker-69156.mongodb.net/bugtracker?retryWrites=true&w=majority'
+const url="mongodb+srv://Tedros:drowssap&321@bugtracker-69156.mongodb.net/bugtracker?retryWrites=true&w=majority"
 var db;
 
  async function connectToDB()
  {
-
-    MongoClient.connect(url, (err, client) => {
-        db = client.db('bugtracker');
-    });
+    MongoClient.connect(url,(err,client)=> {
+   db=client.db('bugtracker');
+     
+ });
 
 }
 
