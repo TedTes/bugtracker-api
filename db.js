@@ -1,6 +1,5 @@
 const MongoClient=require('mongodb').MongoClient;
 require('dotenv').config();
-console.log(process.env.DB_URL)
 const url=process.env.DB_URL||'mongodb+srv://Tedros:drowssap&321@bugtracker-69156.mongodb.net/bugtracker?retryWrites=true&w=majority'
 var db;
 
