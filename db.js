@@ -4,7 +4,7 @@ const url="mongodb+srv://Tedros:drowssap&321@bugtracker-69156.mongodb.net/bugtra
 var db;
  async function connectToDB()
  {
-    MongoClient.connect("mongodb+srv://Tedros:drowssap&321@bugtracker-69156.mongodb.net/bugtracker?retryWrites=true&w=majority",(err,client)=> {
+   await MongoClient.connect("mongodb+srv://Tedros:drowssap&321@bugtracker-69156.mongodb.net/bugtracker?retryWrites=true&w=majority",(err,client)=> {
    db=client.db('bugtracker');
      
  });
