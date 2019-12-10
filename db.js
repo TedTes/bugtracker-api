@@ -2,10 +2,9 @@ const MongoClient=require('mongodb').MongoClient;
 require('dotenv').config();
 const url="mongodb+srv://Tedros:drowssap&321@bugtracker-69156.mongodb.net/bugtracker?retryWrites=true&w=majority"
 var db;
-
  async function connectToDB()
  {
-    MongoClient.connect(url,(err,client)=> {
+    MongoClient.connect("mongodb+srv://Tedros:drowssap&321@bugtracker-69156.mongodb.net/bugtracker?retryWrites=true&w=majority",(err,client)=> {
    db=client.db('bugtracker');
      
  });
